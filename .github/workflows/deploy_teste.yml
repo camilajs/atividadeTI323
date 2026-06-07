@@ -48,16 +48,16 @@ jobs:
         run:  ls -la
       - name: Instala o Node na maquina virtual        
         uses: actions/setup-node@v6
-      - name: Instala as dependencias do projeto
+      - name: Instala as dependências do projeto
         working-directory: api 
         run: npm ci
       - name: Roda os testes
         working-directory: api 
         run: npm run test 
-      - name: verifica se fez corretamente
+      - name: Verifica se fez corretamente
         working-directory: api 
         run:  ls -la        
-      - name: Gera relatorio de testes
+      - name: Gera relatório de testes
         uses: dorny/test-reporter@v3
         if: success() || failure()  # roda de qualquer maneira
         with:
@@ -71,7 +71,7 @@ jobs:
         env:
           PORT: 3001
           NODE_ENV: test
-      - name: Instala as dependencias do projeto
+      - name: Instala as dependências do projeto
         working-directory: app 
         run: npm ci
         
@@ -87,7 +87,7 @@ jobs:
       - name: Instala as dependencias do projeto
         working-directory: e2e
         run: npm ci    
-      - name: Roda os testes Funcionais
+      - name: Roda os testes funcionais
         if: success() 
         working-directory: e2e
         run: npm run test 
@@ -95,7 +95,7 @@ jobs:
           API_URL: http://localhost:3001
           APP_URL: http://localhost:3000
         
-      - name: verifica se fez corretamente
+      - name: Verifica se fez corretamente
         working-directory: e2e 
         run:  ls -la          
       - name: fotos da tela
