@@ -106,7 +106,6 @@ jobs:
           # Path to the release files
           # Gravar as fotos na raiz do projeto no docker
 
-          # path: /home/runner/work//aula_teste_101/aula_teste_101/e2e-tests/screenshots/**/*.png
-          path: /home/runner/work//TI323_teste_jest_selenium/TI323_teste_jest_selenium/e2e/screenshots/*.png
+          path: /home/runner/work//atividadeTI323/atividadeTI323/e2e/screenshots/*.png
 
 
