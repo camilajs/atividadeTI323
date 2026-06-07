@@ -44,7 +44,7 @@ jobs:
     steps:
       - name: Get Code from repository
         uses: actions/checkout@v6
-      - name: verifica se fez corretamente
+      - name: Verifica se fez corretamente
         run:  ls -la
       - name: Instala o Node na maquina virtual        
         uses: actions/setup-node@v6
@@ -98,7 +98,7 @@ jobs:
       - name: Verifica se fez corretamente
         working-directory: e2e 
         run:  ls -la          
-      - name: fotos da tela
+      - name: Fotos da tela
         if: success()
         uses: actions/upload-artifact@v4
         with:
@@ -107,5 +107,7 @@ jobs:
           # Gravar as fotos na raiz do projeto no docker
 
           path: /home/runner/work//atividadeTI323/atividadeTI323/e2e/screenshots/*.png
+
+# link para repositório no github: https://github.com/camilajs/atividadeTI323
 
 
