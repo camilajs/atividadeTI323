@@ -10,4 +10,6 @@ describe('Teste com valores corretos', () => {
         expect(calcularIMC(64, 1.60)).toBeCloseTo(25, 5);
     });
 
+    
+
 });
