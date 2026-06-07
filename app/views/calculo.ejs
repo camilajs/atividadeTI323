@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo de IMC</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0%;
+        }
+
+        body{
+            background-color: black;
+        }
+
+        h1{
+            margin: 20px 0;
+            color: black;
+        }
+
+        .box, form{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items:center;
+        }
+
+        .box{
+            background-color: aliceblue;
+            width: 600px;
+            margin: 20% auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 4px 8px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        input{
+            gap: 5px;
+            border-radius: 20px;
+            padding: 5px 15px;
+            width: 300px;
+            margin: 3px;
+            border: 1px solid black;
+        }
+
+        button{
+            padding: 5px;
+            background-color: gray;
+            border: none;
+            border-radius: 2px;
+            color: white;
+        }
+
+        button:hover{
+            color: black;
+            background-color: rgb(159, 205, 245);
+            cursor: pointer;
+        }
+
+        nav{
+            margin: 20px;
+        }
+
+        .resultado{
+            margin: 5px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="box">
+    <nav id="cabecalho">
+        <div><h1>Cálculo de IMC</h1></div>
+        <div>
+            Olá, <strong><%= user.nome %></strong>
+        </div>
+        <a href="/logout">Sair</a>
+    </nav>
+    <form method="POST" action="/calculo" id="calculoForm">
+        <div>
+            <label for="peso">Peso: </label>
+            <input type="text" id="peso" name="peso" 
+              placeholder="Digite seu peso:" required>
+        </div>
+        <div>
+            <label for="altura">Altura: </label>
+            <input type="text" id="altura" name="altura" 
+              placeholder="Digite sua altura:" required>           
+        </div>
+        <button id="btnCalcular">Calcular</button>
+    </form>
+    
+    <div class="resultado"><span>Resultado... </span> <span id="data"></span></div>
+    </div>
+</body>
+<script>
+    const form = document.querySelector('#calculoForm');
+
+    form.addEventListener('submit', calcular)
+
+    async function calcular(event) {
+    event.preventDefault();
+
+    const pesoF = parseFloat(document.getElementById('peso').value); 
+    const alturaF = parseFloat(document.getElementById('altura').value); 
+    const payload = {
+        peso : pesoF,
+        altura : alturaF,
+    };
+    try {
+        const res = await fetch('/calculo', {
+            method: 'POST',
+            headers: {'Content-Type':'application/json'},
+            body: JSON.stringify(payload),
+        });
+        const json = await res.json();
+        if (!json.success) { alert('Erro'+ json.error); return; }
+
+        const d = json.data;
+        document.querySelector('.resultado').innerHTML = `Resultado: ${d.toFixed(2)}`;
+        
+    } catch (err) {
+        alert("erro " + err.message)
+    } finally {
+
+    }
+}  
+</script>
+</html>

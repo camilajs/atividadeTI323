@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN</title>
+    <style>
+        .erro {
+            background: #fef2f2;
+            border: 1px solid #fca5a5;
+            color: #b91c1c;
+            display: flex;
+            align-items: center;
+            margin: 10px auto;
+        }
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            background-image: url(https://images.kerrangcdn.com/images/2025/06/calum-hood-order-chaos-order-artwork-header.jpg?auto=compress&w=800&fit=crop&fp-x=0.5&fp-y=0.5);
+            background-size: cover;
+            background-position: center;
+        }
+
+        h1{
+            margin: 20px 0;
+            color: black;
+        }
+
+        .box, form{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items:center;
+        }
+
+        .box{
+            background-color: aliceblue;
+            width: 600px;
+            margin: 20% auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 4px 8px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        input{
+            gap: 5px;
+            border-radius: 20px;
+            padding: 5px 15px;
+            width: 300px;
+            margin: 3px;
+            border: 1px solid black;
+        }
+
+        button{
+            padding: 5px;
+            background-color: gray;
+            border: none;
+            border-radius: 2px;
+            color: white;
+        }
+
+        button:hover{
+            color: black;
+            background-color: rgb(159, 205, 245);
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box">
+    <div> <h1>LOGIN</h1></div>  
+    
+    <form method="POST" action="/login" id="loginForm">
+        <div>
+            <label for="username">Usuário</label>
+            <input type="text" id="username" name="username"
+               placeholder="Digite seu usuário" 
+               autocomplete="username" required>
+        </div>
+        <div>
+            <label for="password">Senha</label>
+            <input type="password" id="password" name="password"
+               placeholder="Digite sua senha" 
+               autocomplete="current-password" required>
+        </div>
+        <button type="submit" id="btnLogin">Entrar</button>
+    </form>
+    <% if (error) { %>
+        <div class="erro"> Erro <%= error %>  </div> 
+    <% } %>
+    </div>
+</body>
+</html>
