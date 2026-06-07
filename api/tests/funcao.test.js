@@ -8,7 +8,7 @@ describe('Teste com valores corretos ', () => {
     });
 
     test('Valores corretos', () => { 
-        expect(calcularIMC(70,1.70)).toBe(24.2);
+        expect(calcularIMC(72,1.80)).toBe(22);
     });
 
 });
